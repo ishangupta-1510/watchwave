@@ -1,13 +1,12 @@
 import mongoose from "mongoose";
 
 interface User {
-  id: string;
+  _id: string;
   username: string;
   photo: string;
   playlist: { body: string }[];
-  liked: Number;
+  liked: { body: string }[];
   comments: { body: string }[];
-  rating?: Number;
   watchedtill: Number;
   watched: boolean;
   admin: boolean;
@@ -17,7 +16,7 @@ const userSchema = new mongoose.Schema<User>({
   username: String,
   photo: String,
   playlist: { type: [{ body: String }], default: [] },
-  liked: { Number, default: 0 },
+  liked: { type: [{ body: String }], default: [] },
   comments: { type: [{ body: String }], default: [] },
   watchedtill: { Number, default: 0 },
   watched: { Boolean, default: false },
